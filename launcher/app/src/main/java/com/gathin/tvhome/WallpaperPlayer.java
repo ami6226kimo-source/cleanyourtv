@@ -107,7 +107,8 @@ final class WallpaperPlayer {
         String previous = preferences.getString("image", "");
         List<File> playable = playable();
         //File first = WallpaperRotation.find(playable, previous);
-        if (first == null) first = WallpaperRotation.pick(playable, previous, order, random);
+        //if (first == null) first = WallpaperRotation.pick(playable, previous, order, random);
+        File first = WallpaperRotation.pick(playable, previous, order, random);
         while (first != null) {
             Bitmap bitmap = decode(first);
             if (bitmap != null) {
