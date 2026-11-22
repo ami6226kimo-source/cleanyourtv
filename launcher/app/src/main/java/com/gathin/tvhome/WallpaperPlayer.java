@@ -66,7 +66,7 @@ final class WallpaperPlayer {
         this.root = root;
         backgroundColor = config.backgroundColor;
         files = new ArrayList<>(config.wallpapers);
-        interval = config.wallpaperRotationMinutes * 60_000L;
+        interval = config.wallpaperRotationMinutes * 10_000L;
         bitmapConfig = config.wallpaperTrueColor ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;
         // The dim is painted into the picture (decode), so no full-screen shade layer is drawn on every frame.
         dimColor = config.wallpaperDim > 0 ? (config.wallpaperDim * 255 / 100) << 24 : 0;
@@ -106,7 +106,7 @@ final class WallpaperPlayer {
     private void showFirst() {
         String previous = preferences.getString("image", "");
         List<File> playable = playable();
-        File first = WallpaperRotation.find(playable, previous);
+        //File first = WallpaperRotation.find(playable, previous);
         if (first == null) first = WallpaperRotation.pick(playable, previous, order, random);
         while (first != null) {
             Bitmap bitmap = decode(first);
